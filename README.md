@@ -30,29 +30,22 @@ A proof-of-concept script to log Discord chatrooms. This can relay logged messag
 Instructions on how to configure this for your needs are annotated in the script: 
 
 ```python
+@c.event
+async def on_message(message):
     # Replace '412905214533838722' with the Discord channel ID you want to log.
     if message.channel.id == "412905214533838722":
-        # Formatting the log: User-ID <Username#0001> Message
-        msg = "**{0.author.id} <{0.author}>** {0.content}".format(message)
-
-        # Plaintext formatting for writing the log to the file.
-        # Also adding timestamp for this one.
-        now = datetime.datetime.now()
-        timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
-        tzone = time.strftime("%Z", time.gmtime())
-        log = "{0.author.id} {1} {2} <{0.author}> {0.content}".format(message, timestamp, tzone)
-        if message.attachments:
-            # If someone posted a picture, we're going to get the url for it
-            # and append it to our log string.
-            img = message.attachments[0]['url']
-            msg += " {}".format(img)
-            log += " {}".format(img)
-
-        # Replace '412905216279831337' with the Dicord channel ID you want to relay logs to.
-        await c.send_message(c.get_channel("412905216279831337"), msg)
-
-        # Writing the log to a text file.
-        print(log, file=open("name_of_server_or_channel.txt", "a"))
+        await log_discord(message, "replace with relay channel id", "name_of_file.txt")
 ```
 
-Copy this if statement for each channel you want to log.
+Copy this _if_ statement for each channel you want to log, replacing the default values with your own.
+
+#### Example Logging Multiple Channels
+
+```python
+@c.event
+async def on_message(message):
+    if message.channel.id == "452307014715179022":
+        await log_discord(message, "452307600785276933", "log_452307014715179022.txt")
+    if message.channel.id == "532307014715171337":
+        await log_discord(message, "265407600785277777", "log_532307014715171337.txt")
+```

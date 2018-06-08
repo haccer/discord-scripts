@@ -26,7 +26,7 @@ async def on_ready():
 
 async def format_message(message):
     # Formatting the log: User ID <Username#0001> Message
-    msg = "**{0.author.id} <{0.author}** {0.content}".format(message)
+    msg = "**{0.author.id} <{0.author}>** {0.content}".format(message)
     
     # Plaintext formatting for writing the log to the file.
     # Also adding timestamp for this one.

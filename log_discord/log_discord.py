@@ -9,7 +9,6 @@ them to a text file. This is useful for spying on people.
 from time import strftime, localtime
 import asyncio
 import discord
-import json
 import re
 
 c = discord.Client()

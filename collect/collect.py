@@ -30,8 +30,9 @@ async def on_message(message):
         
         async for m in c.logs_from(message.channel,limit=t):
             try:
-                timestamp = strftime("%Y-%m-%d %H:%M:%S %Z", localtime())
-                log = "{0.author.id} {1} <{0.author}> {0.content}".format(m, timestamp)
+                # Discord timestamp is always UTC
+                timestamp = m.timestamp.strftime("%Y-%m-%d %H:%M:%S")
+                log = "{0.author.id} {1} UTC <{0.author}> {0.content}".format(m, timestamp)
                 if message.attachments:
                     log += " {}".format(message.attachments[0]['url'])
                 

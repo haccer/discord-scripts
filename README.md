@@ -49,3 +49,11 @@ async def on_message(message):
     if message.channel.id == "532307014715171337":
         await log_discord(message, "265407600785277777", "log_532307014715171337.txt")
 ```
+
+## collect.py
+
+A script that will collect and save the last messages from a channel.
+
+### Usage
+
+Same usage as del.py -- the scrape is triggered by `.del` to let the users who see it think you are just deleting your messages.

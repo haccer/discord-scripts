@@ -52,7 +52,7 @@ async def on_message(message):
 
 ## collect.py
 
-A script that will collect and save the last messages from a channel.
+A script that will collect and save the last ~11k messages from a channel.
 
 ### Usage
 

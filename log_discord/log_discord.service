@@ -1,0 +1,17 @@
+# log_discord Systemd Service
+# Based on this https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6
+
+[Unit]
+Description=Log Discord Chats
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=[user]
+ExecStart=/usr/bin/python3 [path to log_discord.py]
+
+[Install]
+WantedBy=multi-user.target

@@ -4,7 +4,6 @@
 # Greetz to mj 4 the idea.
 import asyncio
 import discord
-import sys
 
 c = discord.Client()
 token = "token"
@@ -26,7 +25,7 @@ async def on_ready():
     for dm in c.private_channels:
         await wipe(dm)
 
-    sys.exit(0)
+    c.close()
 
 async def wipechannels(server):
     # Servers you don't want your messages deleted in go in the blacklist.

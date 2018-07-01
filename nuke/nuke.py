@@ -26,7 +26,7 @@ async def on_ready():
     for dm in c.private_channels:
         await wipe(dm)
 
-    sys.exit(1)
+    sys.exit(0)
 
 async def wipechannels(server):
     # Servers you don't want your messages deleted in go in the blacklist.

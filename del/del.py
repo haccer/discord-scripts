@@ -19,10 +19,10 @@ async def on_message(message):
             t = int(message.content[len('.del'):].strip())
         else:
             t = 9999
-        async for m in c.logs_from(message.channel,limit=t):
+        async for m in message.channel.history(limit=t):
             try:
                 if m.author == c.user:
-                    await c.delete_message(m)
+                    await m.delete()
             except: pass
 
 c.run(token, bot=False)
